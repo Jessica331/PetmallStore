@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--edge浏览器H5兼容设置-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--360浏览器H5兼容设置-->
+		<meta name="renderer" content="webkit" />
+		<title>宠物产品商城</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--导入核心文件-->
+		<script src="../bootstrap3/js/holder.js"></script>
+		<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+		<script src="../bootstrap3/js/bootstrap.js"></script>
+		<!-- 字体图标 -->
+		<link rel="stylesheet" href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/top.css" />
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../css/orderInfo.css" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css" />
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="header">
+			<!--电脑商城logo-->
+			<div class="row">
+				<div class="col-md-3">
+					<a href="index.html">
+						<img src="../images/index/stumalllogo.png" />
+					</a>
+				</div>
+				<!--快捷选项-->
+				<div class="col-md-9 top-item">
+					<ul class="list-inline pull-right">
+						<li><a href="favorites.html"><span class="fa fa-heart"></span>&nbsp;收藏</a></li>
+						<li class="li-split">|</li>
+						<li><a href="orders.html"><span class="fa fa-file-text"></span>&nbsp;订单</a></li>
+						<li class="li-split">|</li>
+						<li><a href="cart.html"><span class="fa fa-cart-plus"></span>&nbsp;购物车</a></li>
+						<li class="li-split">|</li>
+						<li>
+							<!--下列列表按钮 ：管理-->
+							<div class="btn-group">
+								<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+									<span id="top-dropdown-btn"><span class="fa fa-gears"></span>&nbsp;管理 <span class="caret"></span></span>
+								</button>
+								<ul class="dropdown-menu top-dropdown-ul" role="menu">
+									<li><a href="password.html">修改密码</a></li>
+									<li><a href="userdata.html">个人资料</a></li>
+									<li><a href="upload.html">上传头像</a></li>
+									<li><a href="address.html">收货管理	</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="li-split">|</li>
+						<li><a href="login.html"><span class="fa fa-user"></span>&nbsp;登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<!--导航 -->
+		<!--分割导航和顶部-->
+		<div class="row top-nav">
+			<div class="col-md-6">
+				<ul class="nav nav-pills">
+					<li>
+						<a href="#"></a>
+					</li>
+					<li class="active"><a href="index.html"><span class="fa fa-home"></span></a></li>
+					<li><a href="#">秒杀</a></li>
+					<li><a href="#">优惠券</a></li>
+					<li><a href="#">电脑VIP</a></li>
+					<li><a href="#">外卖</a></li>
+					<li><a href="#">超市</a></li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<form action="search.html" class="form-inline pull-right" role="form">
+					<div class="form-group">
+						<input type="text" class="form-control" id="search" name="search" placeholder="请输入商品名称进行搜索">
+					</div>
+					<button type="submit" class="btn btn-default btn-sm"><span class="fa fa-search"></span></button>
+				</form>
+			</div>
+		</div>
+		<!--头部结束-->
+		<!--导航结束-->
+		<!--页面主体开始-->
+		<div class="container">
+			<div class="col-md-offset-1 col-md-10">
+				<h1>订单详情：</h1>
+
+				<h2 class="page-header">地址详情：</h2>
+				收货人姓名：<span id="recvName"></span> 邮政编码：<span id="zip"></span> 联系电话：<span id="phone">1380***1234</span>
+				收货地址：<span id="address">北京市房山区高老庄3排6号</span>
+				<h2 class="page-header">商品详情：</h2>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							订单号：<span id="orderVoId2"></span>，
+							下单时间：<span id="orderTime2"></span> ，
+							收货人：<span id="recvName2"></span>
+            		</h3>
+					</div>
+					<div class="panel-body">
+						<table class="orders-table">
+							<thead>
+								<tr>
+									<th width="15%"></th>
+									<th width="35%">商品</th>
+									<th width="15%">单价</th>
+									<th width="15%">数量</th>
+									<th width="20%">小计</th>
+								</tr>
+							</thead>
+							<tbody id="orders-body" class="orders-body">
+
+							</tbody>
+						</table>
+						<div>
+							<span class="pull-right"> 订单总金额：￥<span id="totalPrice"> ¥5298 </span> </span>
+						</div>
+					</div>
+				</div>
+				<a href="orders.html">返回</a>
+			</div>
+		</div>
+		<!--页脚开始-->
+		<div class="clearfix"></div>
+		<footer class="footer">
+			<!-- 品质保障，私人定制等-->
+			<div class="text-center rights container">
+				<div class="col-md-offset-2 col-md-2">
+					<span class="fa fa-thumbs-o-up"></span>
+					<p>品质保障</p>
+				</div>
+				<div class="col-md-2">
+					<span class="fa fa-address-card-o"></span>
+					<p>私人订制</p>
+				</div>
+				<div class="col-md-2">
+					<span class="fa fa-graduation-cap"></span>
+					<p>学生特供</p>
+				</div>
+				<div class="col-md-2">
+					<span class="fa fa-bitcoin"></span>
+					<p>专属特权</p>
+				</div>
+			</div>
+			<!--联系我们、下载客户端等-->
+			<div class="container beforeBottom">
+				<div class="col-md-offset-1 col-md-3">
+					<div><img src="../images/index/stumalllogo.png" alt="" class="footLogo" /></div>
+					<div><img src="../images/index/footerFont.png" alt="" /></div>
+				</div>
+				<div class="col-md-4 callus text-center">
+					<div class="col-md-4">
+						<ul>
+							<li>
+								<a href="#">
+									<p>买家帮助</p>
+								</a>
+							</li>
+							<li><a href="#">新手指南</a></li>
+							<li><a href="#">服务保障</a></li>
+							<li><a href="#">常见问题</a></li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<ul>
+							<li>
+								<a href="#">
+									<p>商家帮助</p>
+								</a>
+							</li>
+							<li><a href="#">商家入驻</a></li>
+							<li><a href="#">商家后台</a></li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<ul>
+							<li>
+								<a href="#">
+									<p>关于我们</p>
+								</a>
+							</li>
+							<li><a href="#">联系我们</a></li>
+							<li>
+								<span class="fa fa-wechat"></span>
+								<span class="fa fa-weibo"></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="col-md-5">
+						<p>宠物产品商城客户端</p>
+						<img src="../images/index/ios.png" class="lf">
+						<img src="../images/index/android.png" alt="" class="lf" />
+					</div>
+					<div class="col-md-6">
+						<img src="../images/index/erweima.png">
+					</div>
+				</div>
+			</div>
+			<!-- 页面底部-备案号 #footer -->
+			<div class="col-md-12 text-center bottom">
+				Copyright © 2022 wangyp.top All Rights Reserved 吉DBC备26546612号-155 <a target="_blank" style="font-size: 12px" href="http://www.wangyp.top/">宠物产品集团有限公司</a> 版权所有
+			</div>
+		</footer>
+		<!--页脚结束-->
+		<script type="text/javascript">
+
+            //在原时间基础上添加几天
+            function addDate(oldDate,days){
+                //根据传进的日期创建date对象
+                let newDate = new Date(oldDate);
+                //获得日期的当前日时间
+                let today = newDate.getDate();
+                //进行时间累加
+                newDate = newDate.setDate(today + days)
+                //返回变化后的时间
+                return newDate;
+            }
+
+            //查询订单信息
+            function showOrder(oid) {
+                $.ajax({
+                    url : "/orders/queryOrderVo",
+                    type: "get",
+                    data: "oid=" + oid,
+                    dataType: "json",
+                    success: function (res) {
+                        let tempOrder = res.data[0]
+                        //转换时间
+                        let order = getDate(tempOrder.orderTime);
+                        let pay = getDate(tempOrder.payTime);
+                        //构建虚拟的发货时间
+                        let sendTime = addDate(tempOrder.orderTime,1);
+                        let send = getDate(sendTime);
+                        //构建虚拟的收货时间
+                        let ensureTime = addDate(tempOrder.orderTime,3);
+                        let ensure = getDate(ensureTime);
+
+                        //修改状态信息
+                        $("#orderVoId").html(tempOrder.oid)
+
+                        let orderStatus = JSON.parse(tempOrder.status);
+                        //根据订单状态修改状态描述信息
+                        if (orderStatus === -1){
+                            $("#orderStatus").html("已取消")
+                            //删除对应的样式
+                            $("li").removeClass("order-success")
+                            $("#tranInfo").empty().html("<p style='font-size: larger' >无<p>")
+                        }else if(orderStatus === 0){
+                            $("#orderStatus").html("未付款")
+                            //删除对应的样式
+                            $("li").removeClass("order-success")
+                            $("#tranInfo").empty().html("<p style='font-size: larger' >无<p>")
+                        }else if (orderStatus === 1){
+                            $("#orderStatus").html("已付款")
+                            $("#orderTime").html(order)
+                            $("#payTime").html(pay)
+                            //删除商场发货的样式
+                            $(".order-flow").children("li:eq(2)").removeClass("order-success")
+                            $(".order-flow").find("li:eq(2)").children("span").removeClass("fa fa-check-circle")
+                            //删除物流信息
+                            $("#tranInfo").empty().html("<p style='font-size: larger' >无<p>")
+                        }else if (orderStatus === 2){
+                            $("#orderStatus").html("待收货")
+                            $("#orderTime").html(order)
+                            $("#payTime").html(pay)
+                            $("#sentTime").html(send)
+                        }else if (orderStatus === 3){
+                            $("#orderStatus").html("已收货")
+                            $("#orderTime").html(order)
+                            $("#payTime").html(pay)
+                            $("#sentTime").html(send)
+                            //激活用户收货的css样式和添加虚拟的收货时间
+                            $("#ensureTime").html(ensure)
+                            $(".order-flow").children("li:eq(3)").addClass("order-success")
+                            $(".order-flow").find("li:eq(3)").append("<span class=\"fa fa-check-circle\"></span>")
+                        }else if (orderStatus === 4){
+                            $("#orderStatus").html("已完成")
+                        }
+                        //修改地址详情
+                        $("#recvName").html(tempOrder.recvName)
+                        $("#zip").html(tempOrder.zip)
+                        $("#phone").html(tempOrder.phone)
+                        $("#address").html(tempOrder.provinceName + tempOrder.cityName
+                            + tempOrder.areaName + tempOrder.address)
+                        //修改商品详情
+                        $("#orderVoId2").html(tempOrder.oid)
+                        $("#orderTime2").html(order)
+                        $("#recvName2").html(tempOrder.recvName)
+                        for (let i = 0; i < res.data.length; i++) {
+                            let str = "";
+                            let orderVo = res.data[i]
+                            str = "<tr>"
+                                + "<td><img src=.." + orderVo.image + "collect.png" + " class=\"img-responsive\" /></td>"
+                                + "<td>" + orderVo.title + "</td>"
+                                + "<td>¥<span>" + orderVo.price + "</span></td>"
+                                + "<td>" + orderVo.num +"</td>"
+                                + "<td>¥<span>" + orderVo.price * orderVo.num + "</span></td>"
+                                + "</tr>"
+                            //将每个商品逐个插入到表格中
+                            $("#orders-body").append(str)
+                        }
+                        //改变订单总金额
+                        $("#totalPrice").html(tempOrder.totalPrice)
+                    },
+                    error: function (error) {
+                        alert("服务器出现故障，请等待攻城狮修复！！")
+                    }
+                });
+            }
+
+
+            $(function () {
+               let oid = getPidFromLastHtml();
+                //自动发送ajax请求查询订单信息
+                showOrder(oid);
+            })
+
+            function getPidFromLastHtml(){
+                //接收上一个页面传来的连接
+                var hrefUrl = location.href;
+                //以url中的"="为截断点，形成一个数组
+                var param = hrefUrl.split("=")
+                //decodeURI解码得到想要的参数
+                var pid = decodeURI(param[1]);
+                return pid;
+            }
+
+            //返回一个参数
+            function getOne(){
+                var result;
+                //返回字符串从url的?处开始
+                var url = decodeURI(window.location.search);
+                //如果等于-1，代表没有找到，即网页连接没有携带任何参数
+                if (url.indexOf("?") != -1){
+                    //返回一个新的字符串，从url连接=符号处索引+1的位置开始返回
+                    result = url.substr(url.indexOf("=")+1);
+                }
+                return result;
+            }
+
+            //有多个参数时，返回json对象
+            function getMany() {
+                var params = "{";
+                //假设连接是这样的
+                // http://localhost:8080/web/orderConfirm.html?cids=5&cids=4
+                //返回字符串从url的?处开始
+                var url = decodeURI(window.location.search); //?cids=5&cids=4
+                if (url.indexOf("?") != -1){
+                    var str = url.substr(1) // cids=5&cids=4
+                    var strItem = str.split("&") //[cids=5,cids=4]
+                    var key = [strItem.length] // 2
+                    var value = [strItem.length] // 2
+                    for (let i = 0; i < strItem.length; i++) { // 0;2;i++
+                        key[i] = strItem[i].split("=")[0] //key[0]= cids
+                        value[i] = decodeURI(strItem[i].split("=")[1]) //value[0] = 5
+                        params = params + "\"" + key[i] + "\":\"" + value[i] + "\""; //params = { "cids":"5",
+                        if(i != strItem.length - 1) { //i != 1
+                            params += ','
+                        }
+                    }
+                }
+                params = params + '}'
+
+                return params;
+            }
+            //根据指定得name获取参数值
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null)
+                    return unescape(r[2]);
+                return null;
+            }
+            //转换时间
+            function getDate(timestamp){
+                let a = new Date(timestamp).getTime();
+                const date = new Date(a);
+                const Y = date.getFullYear() + '-';
+                const M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+                const D = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate()) + '  ';
+                const h = (date.getHours() < 10 ? '0'+date.getHours() : date.getHours()) + ':';
+                const m = (date.getMinutes() <10 ? '0'+date.getMinutes() : date.getMinutes()) ;
+                // const s = date.getSeconds(); // 秒
+                const dateString = Y + M + D + h + m;
+                // console.log('dateString', dateString); // > dateString 2021-07-06 14:23
+                return dateString;
+            }
+		</script>
+	</body>
+
+</html>

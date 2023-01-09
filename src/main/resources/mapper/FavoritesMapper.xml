@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wangyp.petmall.mapper.FavoritesMapper">
+
+    <resultMap id="queryFavorites" type="com.wangyp.petmall.entity.Favorites">
+        <id column="fid" property="fid"/>
+        <result column="uid" property="uid"/>
+        <result column="sell_point" property="sellPoint"/>
+    </resultMap>
+
+    <insert id="addFavorites" parameterType="com.wangyp.petmall.entity.Favorites" useGeneratedKeys="true" keyProperty="fid">
+        insert into t_favorites(uid,pid,image,price,title,sell_point,status)
+        values(#{uid},#{pid},#{image},#{price},#{title},#{sellPoint},#{status})
+    </insert>
+
+    <select id="queryFavoritesByUidAndStatus" resultMap="queryFavorites">
+        select * from t_favorites where uid = #{uid} and status = #{status}
+    </select>
+
+    <select id="findFavorites" resultType="int">
+        select count(1) from t_favorites where uid= #{uid} and pid = #{pid}
+            and status = 1
+    </select>
+
+    <update id="updateFavoritesStatus">
+        update t_favorites set status = #{status} where fid = #{fid} and uid = #{uid}
+    </update>
+
+    <delete id="deleteFavorites">
+        DELETE FROM t_favorites WHERE uid = #{uid} and fid = #{fid}
+    </delete>
+
+</mapper>
